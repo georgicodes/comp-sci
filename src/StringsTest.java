@@ -17,4 +17,14 @@ public class StringsTest {
     public void doesNotHaveUnique() {
         assertFalse(Strings.hasUnique("cca"));
     }
+
+    @Test
+    public void isPermutation() {
+        assertTrue(Strings.isPermutation("cat", "tac"));
+    }
+
+    @Test
+    public void isNotPermutation() {
+        assertFalse(Strings.isPermutation("caf", "tac"));
+    }
 }
