@@ -10,7 +10,7 @@ public class Strings {
         char[] letters = s.toCharArray();
 
         for (char c : letters) {
-            int count =  ascii[c] + 1;
+            int count = ascii[c] + 1;
             if (count > 1)
                 return false;
             ascii[c] = count;
@@ -35,10 +35,63 @@ public class Strings {
 
         for (char c : b.toCharArray()) {
             int count = ascii[c];
-            count = count -1;
+            count = count - 1;
             if (count < 0)
                 return false;
         }
         return true;
     }
+
+    public static int maxCouples(char[] c) {
+        int max = 0;
+        int end = c.length;
+        int l = 0;
+        int r = 1;
+
+        while (l >= 0 && r < end) {
+            if (c[l] == c[r]) {
+                max++;
+                if (l - 1 >= 0) {
+                    l--;
+                    r++;
+                } else {
+                    l = r;
+                    r++;
+                }
+            } else {
+                l++;
+                r++;
+            }
+        }
+        return max;
+    }
+
+    // Time O(n)
+    // Space O(n)
+    public static String removeDuplicates(String s) {
+        boolean[] ascii = new boolean[256];
+        int count = 0;
+        char chars[] = s.toCharArray();
+
+        for (char c : chars) {
+            if (ascii[c]) {
+                count++;
+            }
+            ascii[c] = true;
+        }
+
+        int idx = 0;
+        char[] result = new char[s.length() - count];
+
+        for (char c : chars) {
+            if (ascii[c]) {
+                result[idx] = c;
+                idx++;
+                ascii[c] = false;
+            }
+        }
+
+        return new String(result);
+    }
+
 }
