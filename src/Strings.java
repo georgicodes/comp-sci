@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Created by catrapture on 27/03/2014.
  */
@@ -99,7 +101,31 @@ public class Strings {
             return;
 
         System.out.println(a);
-        printFib(b, a+b, --count);
+        printFib(b, a + b, --count);
+    }
+
+    public static int countPairsAddToK(int[] ints, int k) {
+        int start = 0;
+        int end = ints.length -1;
+        int count = 0;
+
+        Arrays.sort(ints);
+
+        while (start < end) {
+            int sum = ints[start] + ints[end];
+
+            if (sum == k) {
+                count++;
+                start++;
+                end--;
+            } else if (sum > k) {
+                end--;
+            } else {
+                start++;
+            }
+        }
+
+        return count;
     }
 
 }

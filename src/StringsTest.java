@@ -39,8 +39,16 @@ public class StringsTest {
         String reuslt = Strings.removeDuplicates("fluffy");
         System.out.println(reuslt);
     }
+
     @Test
     public void shouldPrintFib() {
         Strings.printFib(0, 1, 10);
+    }
+
+    @Test
+    public void shouldFindNumParisAddToK() {
+        int[] ints = new int[]{1, 4, 3, 2, 1, 6, 7, 8, 9};
+        int reuslt = Strings.countPairsAddToK(ints, 9);
+        System.out.println(reuslt);
     }
 }
