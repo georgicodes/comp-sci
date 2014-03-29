@@ -39,4 +39,8 @@ public class StringsTest {
         String reuslt = Strings.removeDuplicates("fluffy");
         System.out.println(reuslt);
     }
+    @Test
+    public void shouldPrintFib() {
+        Strings.printFib(0, 1, 10);
+    }
 }

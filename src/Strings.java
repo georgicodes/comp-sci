@@ -94,4 +94,12 @@ public class Strings {
         return new String(result);
     }
 
+    public static void printFib(int a, int b, int count) {
+        if (count == 0)
+            return;
+
+        System.out.println(a);
+        printFib(b, a+b, --count);
+    }
+
 }
