@@ -40,10 +40,6 @@ public class StringsTest {
         System.out.println(reuslt);
     }
 
-    @Test
-    public void shouldPrintFib() {
-        Strings.printFib(0, 1, 10);
-    }
 
     @Test
     public void shouldFindNumParisAddToK() {
@@ -51,4 +47,6 @@ public class StringsTest {
         int reuslt = Strings.countPairsAddToK(ints, 9);
         System.out.println(reuslt);
     }
+
+
 }

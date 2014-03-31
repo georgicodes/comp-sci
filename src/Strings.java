@@ -96,14 +96,6 @@ public class Strings {
         return new String(result);
     }
 
-    public static void printFib(int a, int b, int count) {
-        if (count == 0)
-            return;
-
-        System.out.println(a);
-        printFib(b, a + b, --count);
-    }
-
     public static int countPairsAddToK(int[] ints, int k) {
         int start = 0;
         int end = ints.length -1;
