@@ -1,5 +1,7 @@
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -40,12 +42,18 @@ public class StringsTest {
         System.out.println(reuslt);
     }
 
-
     @Test
     public void shouldFindNumParisAddToK() {
         int[] ints = new int[]{1, 4, 3, 2, 1, 6, 7, 8, 9};
         int reuslt = Strings.countPairsAddToK(ints, 9);
         System.out.println(reuslt);
+    }
+
+    @Test
+    public void shouldRemoveDuplicateInts() {
+        int[] ints = new int[]{1, 4, 3, 9, 2, 1, 6, 7, 8, 9};
+        int[] result = Strings.removeDuplicatesFromIntArray(ints);
+        System.out.println(Arrays.toString(result));
     }
 
 

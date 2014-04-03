@@ -5,18 +5,18 @@ import java.util.NoSuchElementException;
  */
 public class BinarySearchTree {
 
-    public Node root = null;
+    public TreeNode root = null;
 
     public boolean add(int data) {
         if (root == null) { // if no root, create it
-            root = new Node(data);
+            root = new TreeNode(data);
             return true;
         } else
             return root.add(data); // else recursively search tree for leaf spot
     }
 
     // Time O (n)
-    public void inOrder(Node root) {
+    public void inOrder(TreeNode root) {
         if (root == null) return;
 
         inOrder(root.left);
@@ -25,11 +25,19 @@ public class BinarySearchTree {
     }
 
     // Time O(n)
-    public int height(Node root) {
+    public int height(TreeNode root) {
         if (root == null)
             return -1; // need -1 here because a tree with only a root node has a height of 0, so 1 + -1 =0
         System.out.println(root.data);
         return 1 + Math.max(height(root.left), height(root.right));
+    }
+
+    // Time O(n)
+    public int size(TreeNode root) {
+        if (root == null)
+            return 0;
+        System.out.println(root.data);
+        return 1 + size(root.left) + size(root.right);
     }
 
     // Time O(h) where h = height
@@ -48,7 +56,7 @@ public class BinarySearchTree {
     }
 
     // Time O(h) where h = height
-    public Node find(int key) {
+    public TreeNode find(TreeNode root, int key) {
         if (root == null) throw new NoSuchElementException();
 
         while (root != null) {
@@ -65,7 +73,7 @@ public class BinarySearchTree {
     }
 
     // Time O(n)
-    public boolean isBST(Node root, int min, int max) {
+    public boolean isBST(TreeNode root, int min, int max) {
         if (root == null)
             return true;
 
@@ -77,5 +85,21 @@ public class BinarySearchTree {
 
         return isBST(root.left, min, root.data) &&
                 isBST(root.right, root.data, max);
+    }
+
+    // Time O(log n)
+    public TreeNode findKth(TreeNode root, int k) {
+        if (root == null)
+            return null;
+
+        int leftSize = size(root.left);
+
+        if (k <= leftSize)
+            return findKth(root.left, k);
+
+        if (k == leftSize + 1)
+            return root;
+
+        return findKth(root.right, k - leftSize - 1);
     }
 }

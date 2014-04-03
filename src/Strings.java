@@ -98,7 +98,7 @@ public class Strings {
 
     public static int countPairsAddToK(int[] ints, int k) {
         int start = 0;
-        int end = ints.length -1;
+        int end = ints.length - 1;
         int count = 0;
 
         Arrays.sort(ints);
@@ -118,6 +118,41 @@ public class Strings {
         }
 
         return count;
+    }
+
+    // Time O(n log n)
+    // Space O(n)
+    public static int[] removeDuplicatesFromIntArray(int[] ints) {
+        if (ints.length == 0 || ints.length == 1) {
+            return ints;
+        }
+
+        Arrays.sort(ints);
+
+        int count = 0;
+        for (int i = 1, p=0; i <= ints.length; i++, p++) {
+            if (i == ints.length) {
+                count++;
+                break;
+            }
+            if (ints[i] != ints[p]) {
+                count++;
+            }
+        }
+
+        int[] result = new int[count];
+        int rI = 0;
+        for (int i = 1, p=0; i <= ints.length; i++, p++) {
+            if (i == ints.length) {
+                result[rI] = ints[p];
+                break;
+            }
+            if (ints[i] != ints[p]) {
+                result[rI] = ints[p];
+                rI++;
+            }
+        }
+        return result;
     }
 
 }
