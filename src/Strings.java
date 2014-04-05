@@ -130,7 +130,7 @@ public class Strings {
         Arrays.sort(ints);
 
         int count = 0;
-        for (int i = 1, p=0; i <= ints.length; i++, p++) {
+        for (int i = 1, p = 0; i <= ints.length; i++, p++) {
             if (i == ints.length) {
                 count++;
                 break;
@@ -142,7 +142,7 @@ public class Strings {
 
         int[] result = new int[count];
         int rI = 0;
-        for (int i = 1, p=0; i <= ints.length; i++, p++) {
+        for (int i = 1, p = 0; i <= ints.length; i++, p++) {
             if (i == ints.length) {
                 result[rI] = ints[p];
                 break;
@@ -153,6 +153,40 @@ public class Strings {
             }
         }
         return result;
+    }
+
+    // Not really working
+    public static int leastFrequentlyOccuring(int[] ints) {
+        int min = Integer.MAX_VALUE;
+        int minIdx = -1;
+        int count = 0;
+
+        if (ints.length == 0)
+            return -1;
+        if (ints.length == 1)
+            return 0;
+
+        for (int i = 1, p = 0; i <= ints.length; i++, p++) {
+            if (i == ints.length) {
+                if (count < min) {
+                    count++;
+                    min = count;
+                    minIdx = p;
+                }
+            }
+            if (ints[i] == ints[p])
+                count++;
+            else {
+                if (count < min) {
+                    count++;
+                    min = count;
+                    minIdx = p;
+                }
+                count = 0;
+            }
+        }
+
+        return ints[minIdx];
     }
 
 }

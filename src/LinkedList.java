@@ -22,6 +22,29 @@ public class LinkedList {
         }
     }
 
+    public boolean hasCycle(Node head) {
+        if (head == null) return false;
+
+        Node slow = head;
+        Node fast = head;
+
+        while (true) {
+
+            slow = slow.next;          // 1 hop.
+
+            if (fast.next != null)
+                fast = fast.next.next; // 2 hops.
+            else
+                return false;          // next node null => no loop.
+
+            if (slow == null || fast == null) // if either hits null..no loop.
+                return false;
+
+            if (slow == fast) // if the two ever meet...we must have a loop.
+                return true;
+        }
+    }
+
     public void reverse() {
         if (head == null || head.next == null)
             return;  //empty or just one node in list
@@ -38,8 +61,7 @@ public class LinkedList {
         Node CurrentNode = Third;
         Node PreviousNode = Second;
 
-        while (CurrentNode != null)
-        {
+        while (CurrentNode != null) {
             Node NextNode = CurrentNode.next;
             CurrentNode.next = PreviousNode;
 
@@ -47,6 +69,7 @@ public class LinkedList {
             CurrentNode = NextNode;
         }
 
-        head  = PreviousNode; //reset the head node
+        head = PreviousNode; //reset the head node
     }
+
 }

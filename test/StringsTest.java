@@ -56,5 +56,12 @@ public class StringsTest {
         System.out.println(Arrays.toString(result));
     }
 
+    @Test
+    public void shouldReturnLeasetFreqOccuring() {
+        int[] ints = new int[]{1, 1, 3};
+        int result = Strings.leastFrequentlyOccuring(ints);
+        System.out.println(result);
+    }
+
 
 }

@@ -12,4 +12,26 @@ public class LinkedListTest {
         list.add(2);
         list.printList();
     }
+
+    @Test
+    public void shouldDetectCycle() {
+        LinkedList list= new LinkedList();
+        Node one = new Node(1, null);
+        Node two = new Node(2, one);
+        one.next = two;
+
+        boolean b = list.hasCycle(one);
+        System.out.println(b);
+    }
+
+    @Test
+    public void shouldNotDetectCycle() {
+        LinkedList list= new LinkedList();
+        Node one = new Node(1, null);
+        Node two = new Node(2, null);
+        one.next = two;
+
+        boolean b = list.hasCycle(one);
+        System.out.println(b);
+    }
 }
