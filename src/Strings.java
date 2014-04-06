@@ -189,4 +189,16 @@ public class Strings {
         return ints[minIdx];
     }
 
+    public static int findMaxInIncreasingThenDecreasingArray(int[] ints) {
+        int lo = 0, hi = ints.length - 1;
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            int midV = ints[mid];
+            if (midV > ints[mid - 1] && midV > ints[mid + 1]) return midV;
+            if (midV > ints[mid - 1] && midV < ints[mid + 1]) lo = mid + 1;
+            else hi = mid - 1;
+        }
+        return -1;
+    }
+
 }

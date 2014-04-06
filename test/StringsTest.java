@@ -63,5 +63,10 @@ public class StringsTest {
         System.out.println(result);
     }
 
-
+    @Test
+    public void shouldFindMaxInIncreasingThenDecreasingArray() {
+        int[] ints = new int[]{2, 3, 4, 5, 6,7 ,8 ,9, 4, 3, 2, 1, 0};
+        int result = Strings.findMaxInIncreasingThenDecreasingArray(ints);
+        System.out.println(result);
+    }
 }

@@ -14,6 +14,16 @@ public class LinkedList {
         }
     }
 
+    public int size() {
+        Node current = head;
+        int size = 0;
+        while (current != null) {
+            size++;
+            current = current.next;
+        }
+        return size;
+    }
+
     public void printList() {
         Node current = head;
         while (current != null) {

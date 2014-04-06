@@ -1,3 +1,5 @@
+import apple.laf.JRSUIUtils;
+
 import java.util.NoSuchElementException;
 
 /**
@@ -15,13 +17,41 @@ public class BinarySearchTree {
             return root.add(data); // else recursively search tree for leaf spot
     }
 
+
+    // Time O (n)
+    public void preOrder(TreeNode root) {
+        if (root == null) return;
+
+        System.out.println(root.data);
+        inOrder(root.left);
+        inOrder(root.right);
+    }
+
+    // Time O (n)
+    public void reverseOrder(TreeNode root) {
+        if (root == null) return;
+
+        inOrder(root.right); // recursively traverse right subtree
+        System.out.println(root.data); // visit the current node
+        inOrder(root.left); // recursively traverse left subtree:
+    }
+
     // Time O (n)
     public void inOrder(TreeNode root) {
         if (root == null) return;
 
+        inOrder(root.left); // recursively traverse left subtree:
+        System.out.println(root.data); // visit the current node
+        inOrder(root.right); // recursively traverse right subtree
+    }
+
+    // Time O (n)
+    public void postOrder(TreeNode root) {
+        if (root == null) return;
+
         inOrder(root.left);
-        System.out.println(root.data);
         inOrder(root.right);
+        System.out.println(root.data);
     }
 
     // Time O(n)
@@ -88,6 +118,7 @@ public class BinarySearchTree {
     }
 
     // Time O(log n)
+    // test this works
     public TreeNode findKth(TreeNode root, int k) {
         if (root == null)
             return null;
@@ -102,4 +133,5 @@ public class BinarySearchTree {
 
         return findKth(root.right, k - leftSize - 1);
     }
+
 }

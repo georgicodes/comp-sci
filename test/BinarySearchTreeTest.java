@@ -18,6 +18,42 @@ public class BinarySearchTreeTest {
     }
 
     @Test
+    public void shouldPrintPreOrder() {
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.add(5);
+        tree.add(2);
+        tree.add(18);
+        tree.add(-4);
+        tree.add(3);
+
+        tree.preOrder(tree.root);
+    }
+
+    @Test
+    public void shouldPrintPreOrderReverse() {
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.add(5);
+        tree.add(2);
+        tree.add(18);
+        tree.add(-4);
+        tree.add(3);
+
+        tree.reverseOrder(tree.root);
+    }
+
+    @Test
+    public void shouldPrintPostOrder() {
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.add(5);
+        tree.add(2);
+        tree.add(18);
+        tree.add(-4);
+        tree.add(3);
+
+        tree.postOrder(tree.root);
+    }
+
+    @Test
     public void shouldPrintHeight() {
         BinarySearchTree tree = new BinarySearchTree();
         tree.add(5);
@@ -94,5 +130,20 @@ public class BinarySearchTreeTest {
         // find the 2nd smallest
         TreeNode result = tree.findKth(tree.root, 4);
         System.out.println("result " + result.data);
+    }
+    @Test
+    public void shouldConvertToLinkedList() {
+        BinarySearchTree tree = new BinarySearchTree();
+        tree.add(3);
+        tree.add(1);
+        tree.add(2);
+        tree.add(5);
+        tree.add(8);
+
+        tree.inOrder(tree.root);
+        LinkedList list = new LinkedList();
+        tree.convertToLinkedList(tree.root, list);
+
+        System.out.print(list.size());
     }
 }
